@@ -1,0 +1,34 @@
+Package: findSVI
+Title: Calculate Social Vulnerability Index for Communities
+Version: 0.1.2
+Authors@R: person("Heli", "Xu", email = "xuheli91@gmail.com",
+  role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-9792-2727"))
+Description: Developed by CDC/ATSDR (Centers for Disease Control and Prevention/
+    Agency for Toxic Substances and Disease Registry), 
+    Social Vulnerability Index (SVI) serves as a tool to assess the resilience 
+    of communities by taking into account socioeconomic and demographic factors. 
+    Provided with year(s), region(s) and a geographic level of interest, 
+    'findSVI' retrieves required variables from US census data and calculates SVI 
+    for communities in the specified area based on CDC/ATSDR SVI documentation. 
+    Reference for the calculation methods: Flanagan BE, Gregory EW, Hallisey EJ, 
+    Heitgerd JL, Lewis B (2011) <doi:10.2202/1547-7355.1792>.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+URL: https://github.com/heli-xu/findSVI,
+        https://heli-xu.github.io/findSVI/
+BugReports: https://github.com/heli-xu/findSVI/issues
+Depends: R (>= 3.5.0)
+Imports: cli, dplyr, magrittr, purrr, stringr, tidycensus, tidyr,
+        tidyselect, rlang, utils
+Suggests: testthat (>= 3.0.0), knitr, rmarkdown, leaflet, htmltools,
+        glue, sf, ggplot2, tmap
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2023-08-25 13:23:03 UTC; Heli
+Author: Heli Xu [aut, cre, cph] (<https://orcid.org/0000-0002-9792-2727>)
+Maintainer: Heli Xu <xuheli91@gmail.com>
+Repository: CRAN
+Date/Publication: 2023-08-25 17:40:11 UTC
