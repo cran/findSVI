@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -69,7 +69,22 @@ info_table
 #    group_by(year, state) %>%
 #    slice_head(n = 3)
 
-## ---- echo=FALSE--------------------------------------------------------------
+## ----echo=FALSE---------------------------------------------------------------
 load(system.file("extdata", "slice_all_results.rda", package = "findSVI"))
 slice_all_results
+
+## ----eval=FALSE---------------------------------------------------------------
+#  cz_svi2020 <- find_svi_x(
+#    year = 2020,
+#    geography = "county",
+#    xwalk = cty_cz_2020_xwalk #county-commuting zone crosswalk
+#  )
+#  
+#  cz_svi2020 %>%
+#    select(GEOID, contains("RPL")) %>%
+#    head(10)
+
+## ----echo=FALSE---------------------------------------------------------------
+load(system.file("extdata","cz_svi2020.rda",package = "findSVI"))
+cz_svi2020
 

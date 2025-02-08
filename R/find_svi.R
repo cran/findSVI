@@ -8,7 +8,7 @@
 #'  which can be obtained at <https://api.census.gov/data/key_signup.html> and
 #'  set up using [tidycensus::census_api_key()].
 #'
-#' @param year A vector containing years of interest (available 2012-2021).
+#' @param year A vector containing years of interest (available 2012-2022).
 #'   Length >=1. Acting as pairs with `state`, `year` should be of the same
 #'   length as `state`. The exception is when it's a single year entry (length
 #'   1), other than providing one state of interest, supply `state = NULL` as
@@ -27,8 +27,8 @@
 #'   and SVI for each theme and all themes. If set as `TRUE`, a full SVI table
 #'   with individual SVI variables and intermediate ranking calculations are
 #'   also included in addition to the theme-related SVIs (similar style to
-#'   tables from [CDC/ATSDR
-#'   database](https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html)).
+#'   tables from CDC/ATSDR
+#'   database(https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html)).
 #'
 #' @returns A tibble of summarised SVI for one or multiple year-state combination(s)
 #'  of interest. Rows represent the geographic units, and columns represent its
@@ -36,8 +36,8 @@
 #'  indicate the corresponding state and year information. For `full.table =
 #'  TRUE`, estimated count and percentage values for individual SVI variables
 #'  are also included. For description of variable names (column names), please
-#'  refer to [CDC/ATSDR
-#'  documentation](https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html).
+#'  refer to CDC/ATSDR
+#'  documentation (https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html).
 #'
 #' @examplesIf Sys.getenv("CENSUS_API_KEY") != ""
 #' # Census API key required
@@ -165,11 +165,11 @@ find_svi  <- function(
 
   if (length(year) > 1) {
 
-    year_valid <- 2012:2021
+    year_valid <- 2012:2022
     if (any(!(year %in% year_valid))) {
       cli::cli_abort(c(
         "x" = "One or more elements of {year} is not a valid input for `year`.",
-        "i" = "Years available for census data retrieval: 2012-2021."
+        "i" = "Years available for census data retrieval: 2012-2022."
       ))
     }
 

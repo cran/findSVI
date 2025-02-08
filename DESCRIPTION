@@ -1,8 +1,13 @@
 Package: findSVI
 Title: Calculate Social Vulnerability Index for Communities
-Version: 0.1.2
-Authors@R: person("Heli", "Xu", email = "xuheli91@gmail.com",
-  role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-9792-2727"))
+Version: 0.2.0
+Authors@R: c(
+    person("Heli", "Xu", email = "xuheli91@gmail.com",
+    role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-9792-2727")),
+    person("Ran", "Li", email = "rl627@drexel.edu",
+    role = "aut", comment = c(ORCID = "0000-0002-4699-4755")),
+    person("Usama", "Bilal", email = "ub45@drexel.edu",
+    role = "aut", comment = c(ORCID = "0000-0002-9868-7773")))
 Description: Developed by CDC/ATSDR (Centers for Disease Control and Prevention/
     Agency for Toxic Substances and Disease Registry), 
     Social Vulnerability Index (SVI) serves as a tool to assess the resilience 
@@ -15,7 +20,7 @@ Description: Developed by CDC/ATSDR (Centers for Disease Control and Prevention/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 URL: https://github.com/heli-xu/findSVI,
         https://heli-xu.github.io/findSVI/
 BugReports: https://github.com/heli-xu/findSVI/issues
@@ -23,12 +28,14 @@ Depends: R (>= 3.5.0)
 Imports: cli, dplyr, magrittr, purrr, stringr, tidycensus, tidyr,
         tidyselect, rlang, utils
 Suggests: testthat (>= 3.0.0), knitr, rmarkdown, leaflet, htmltools,
-        glue, sf, ggplot2, tmap
+        glue, sf, ggplot2, reactable, cowplot
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2023-08-25 13:23:03 UTC; Heli
-Author: Heli Xu [aut, cre, cph] (<https://orcid.org/0000-0002-9792-2727>)
+Packaged: 2025-02-08 20:26:38 UTC; Heli
+Author: Heli Xu [aut, cre, cph] (<https://orcid.org/0000-0002-9792-2727>),
+  Ran Li [aut] (<https://orcid.org/0000-0002-4699-4755>),
+  Usama Bilal [aut] (<https://orcid.org/0000-0002-9868-7773>)
 Maintainer: Heli Xu <xuheli91@gmail.com>
 Repository: CRAN
-Date/Publication: 2023-08-25 17:40:11 UTC
+Date/Publication: 2025-02-08 20:40:07 UTC

@@ -49,7 +49,7 @@ overflow: visible;
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,7 +60,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -340,8 +340,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(findSVI)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(findSVI)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <div id="what-is-svi" class="section level1">
 <h1>What is SVI</h1>
 <p>First introduced in 2011 (Flanagan BE, Gregory EW, Hallisey EJ,
@@ -354,12 +354,14 @@ The CDC/ATSDR Social Vulnerability Index (CDC/ATSDR SVI) utilizes 16
 U.S. census variables grouped into 4 domains/themes, and obtains a
 relative vulnerability level using percentile ranks for each geographic
 unit within a region. Communities with higher SVI are considered more
-vulnerable in public health crisis. For more details, please refer to <a href="https://www.atsdr.cdc.gov/placeandhealth/svi/index.html">CDC/ATSDR
-SVI website</a>.</p>
+vulnerable in public health crisis. For more details, please refer to
+CDC/ATSDR SVI website
+(https://www.atsdr.cdc.gov/placeandhealth/svi/index.html).</p>
 </div>
 <div id="why-we-might-need-to-calculate-svi" class="section level1">
 <h1>Why we might need to calculate SVI</h1>
-<p>CDC/ATSDR releases SVI biannually <a href="https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html">here</a>
+<p>CDC/ATSDR releases SVI biannually
+(https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html)
 in both shapefile and csv format, at the counties/census tracts level
 within an individual state or in the US. While the SVI database is very
 useful, sometimes we would prefer more up-to-date census data or
@@ -368,7 +370,7 @@ questions about ZCTA-level SVI of Pennsylvania in 2021, or census
 tract-level SVI within a few counties in Pennsylvania in 2020, we might
 need to calculate SVI from the census data ourselves.</p>
 <p>findSVI aims to support more flexible and specific SVI analysis in
-these cases with additional options for years (2012-2021) and geographic
+these cases with additional options for years (2012-2022) and geographic
 levels (eg. ZCTA/places, combining multiple states).</p>
 <p>This document introduces you to the datasets and basic tools of
 findSVI for census data retrieval and SVI calculation.</p>
@@ -381,9 +383,9 @@ findSVI for census data retrieval and SVI calculation.</p>
 documentation, a series of lists and tables containing census variables
 information are included in the package.</p>
 <ul>
-<li>census_variables_(2012-2021): Each list contains the year-specific
+<li>census_variables_(2012-2022): Each list contains the year-specific
 census variables needed for SVI calculation.</li>
-<li>variable_ep_calculation_(2012-2021): Each table contains the SVI
+<li>variable_ep_calculation_(2012-2022): Each table contains the SVI
 variable names, their theme group and corresponding census variable(s)
 and calculation formula.</li>
 </ul>
@@ -417,8 +419,8 @@ arguments are largely the same with <code>tidycensus::get_acs()</code>,
 including year, geography and state.</p>
 <p>For example, we can retrieve ZCTA-level data for Rhode Island for
 2018:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_census_data</span>(<span class="dv">2018</span>, <span class="st">&quot;zcta&quot;</span>, <span class="st">&quot;RI&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_census_data</span>(<span class="dv">2018</span>, <span class="st">&quot;zcta&quot;</span>, <span class="st">&quot;RI&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>data[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 10 × 10
 #&gt;    GEOID NAME        B17001_002E B17001_002M B19301_001E B19301_001M B06009_002E
 #&gt;    &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
@@ -446,17 +448,18 @@ results in a longer running time for these requests.</p>
 <h1>Compute SVI with <code>get_svi()</code></h1>
 <p><code>get_svi()</code> takes the year and census data (retrieved by
 <code>get_census_data()</code>) as arguments, and calculate the SVI
-based on <a href="https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html">CDC/ATSDR
-documentation</a>. This function uses the built-in
-<code>variable_calculation</code> tables and populate the SVI variables
-with census variables directly, or basic summation/percentage
-calculation of census variables. For each SVI variable,a geographic unit
-is ranked against the others in the selected region, followed by summing
-up rankings for variables within each theme to perform percentile
-ranking again as the SVI for each theme and overall SVI.</p>
+based on CDC/ATSDR documentation
+(https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html).
+This function uses the built-in <code>variable_calculation</code> tables
+and populate the SVI variables with census variables directly, or basic
+summation/percentage calculation of census variables. For each SVI
+variable,a geographic unit is ranked against the others in the selected
+region, followed by summing up rankings for variables within each theme
+to perform percentile ranking again as the SVI for theme-specific and
+overall SVI.</p>
 <p>For example, to obtain ZCTA-level SVI for Rhode Island for 2018:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">get_svi</span>(<span class="dv">2018</span>, data)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">get_svi</span>(<span class="dv">2018</span>, data)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">glimpse</span>(result)</span></code></pre></div>
 <pre><code>#&gt; Rows: 77
 #&gt; Columns: 60
 #&gt; $ GEOID      &lt;chr&gt; &quot;02802&quot;, &quot;02804&quot;, &quot;02806&quot;, &quot;02807&quot;, &quot;02808&quot;, &quot;02809&quot;, &quot;0281…
@@ -555,8 +558,8 @@ table.</p>
 <h3>Single year-state entry</h3>
 <p>Using the same example as above, to obtain ZCTA-level census data and
 calculate SVI for Rhode Island for 2018 in one step:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>onestep_result <span class="ot">&lt;-</span> <span class="fu">find_svi</span>(<span class="dv">2018</span>, <span class="st">&quot;RI&quot;</span>, <span class="st">&quot;zcta&quot;</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>onestep_result <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>onestep_result <span class="ot">&lt;-</span> <span class="fu">find_svi</span>(<span class="dv">2018</span>, <span class="st">&quot;RI&quot;</span>, <span class="st">&quot;zcta&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>onestep_result <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 10 × 8
 #&gt;    GEOID RPL_theme1 RPL_theme2 RPL_theme3 RPL_theme4 RPL_themes  year state
 #&gt;    &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
@@ -583,15 +586,15 @@ the individual SVI variables from census data (like the result from
 <code>year</code> and <code>state</code> arguments and they’ll be
 treated as pairs. For example, to obtain county-level SVI of New Jersey
 and Pennsylvania for 2017 and 2018, respectively:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>summarise_results <span class="ot">&lt;-</span> <span class="fu">find_svi</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">c</span>(<span class="dv">2017</span>, <span class="dv">2018</span>),</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="fu">c</span>(<span class="st">&quot;NJ&quot;</span>, <span class="st">&quot;PA&quot;</span>),</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>summarise_results <span class="sc">%&gt;%</span> </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, state) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>summarise_results <span class="ot">&lt;-</span> <span class="fu">find_svi</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">c</span>(<span class="dv">2017</span>, <span class="dv">2018</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="at">state =</span> <span class="fu">c</span>(<span class="st">&quot;NJ&quot;</span>, <span class="st">&quot;PA&quot;</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>) </span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>summarise_results <span class="sc">%&gt;%</span> </span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  <span class="fu">group_by</span>(year, state) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 10 × 8
 #&gt; # Groups:   year, state [2]
 #&gt;    GEOID RPL_theme1 RPL_theme2 RPL_theme3 RPL_theme4 RPL_themes  year state
@@ -628,15 +631,15 @@ to include in the analysis:</p>
 <p>We could extract specific columns of interest from
 <code>info_table</code> for the <code>year</code> and <code>state</code>
 arguments:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>all_results <span class="ot">&lt;-</span> <span class="fu">find_svi</span>(</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> info_table<span class="sc">$</span>year,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> info_table<span class="sc">$</span>state,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>all_results <span class="sc">%&gt;%</span> </span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, state) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>all_results <span class="ot">&lt;-</span> <span class="fu">find_svi</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="at">year =</span> info_table<span class="sc">$</span>year,</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="at">state =</span> info_table<span class="sc">$</span>state,</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>)</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>all_results <span class="sc">%&gt;%</span> </span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  <span class="fu">group_by</span>(year, state) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 18 × 8
 #&gt; # Groups:   year, state [6]
 #&gt;    GEOID RPL_theme1 RPL_theme2 RPL_theme3 RPL_theme4 RPL_themes  year state
@@ -665,6 +668,48 @@ the counties in the 6 year-state pairs from the columns of
 <code>info_table</code>. This will likely make things easier especially
 there’s a long list of year-state combinations to process.</p>
 </div>
+</div>
+<div id="custom-boundaries-find_svi_x" class="section level1">
+<h1>Custom Boundaries: <code>find_svi_x()</code></h1>
+<p>To calculate SVI for custom geographic boundaries, we could use
+<code>find_svi_x()</code> and supply an additional crosswalk
+(relationship table) between the custom boundaries and a Census
+geographic level. The census geographic level should be fully nested in
+the custom geographic boundaries, so that the census data can be
+aggregated to the custom level for SVI calculation.</p>
+<p>As an example and a template, the crosswalk of US counties and
+commuting zones for 2020 is stored in the package and documented in
+<code>?cty_cz_2020_xwalk2020</code>. Using <code>find_svi_x()</code>, we
+can retrieve the census data at the county level, aggregate the data to
+the commuting zone level, and calculate the SVI for commuting zones.
+Below shows the overall and theme-specific SVIs for commuting zones 1-10
+(GEOID represents the commuting zone IDs).</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>cz_svi2020 <span class="ot">&lt;-</span> <span class="fu">find_svi_x</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2020</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="at">xwalk =</span> cty_cz_2020_xwalk <span class="co">#county-commuting zone crosswalk</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>)</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>cz_svi2020 <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>  <span class="fu">select</span>(GEOID, <span class="fu">contains</span>(<span class="st">&quot;RPL&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 10 × 6
+#&gt;    GEOID RPL_theme1 RPL_theme2 RPL_theme3 RPL_theme4 RPL_themes
+#&gt;    &lt;int&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+#&gt;  1     1      0.778      0.833      0.885     0.730       0.826
+#&gt;  2     2      0.734      0.436      0.698     0.388       0.625
+#&gt;  3     3      0.871      0.892      0.703     0.570       0.833
+#&gt;  4     4      0.881      0.498      0.838     0.947       0.876
+#&gt;  5     5      0.560      0.675      0.684     0.333       0.606
+#&gt;  6     6      0.799      0.813      0.605     0.302       0.720
+#&gt;  7     7      0.821      0.680      0.802     0.875       0.842
+#&gt;  8     8      0.694      0.888      0.438     0.0842      0.570
+#&gt;  9     9      0.899      0.969      0.838     0.918       0.962
+#&gt; 10    10      0.357      0.507      0.589     0.134       0.335</code></pre>
+<p>Alternatively, we could also use <code>get_census_data()</code> with
+<code>exp=TRUE</code> and <code>get_svi_x()</code>.</p>
+<p>For more details on spatial analysis, validation, and custom
+boundaries, please see other vignettes <a href="https://heli-xu.github.io/findSVI/index.html">here</a>.</p>
 </div>
 
 

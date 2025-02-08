@@ -22,5 +22,11 @@ Useful links:
 \author{
 \strong{Maintainer}: Heli Xu \email{xuheli91@gmail.com} (\href{https://orcid.org/0000-0002-9792-2727}{ORCID}) [copyright holder]
 
+Authors:
+\itemize{
+  \item Ran Li \email{rl627@drexel.edu} (\href{https://orcid.org/0000-0002-4699-4755}{ORCID})
+  \item Usama Bilal \email{ub45@drexel.edu} (\href{https://orcid.org/0000-0002-9868-7773}{ORCID})
+}
+
 }
 \keyword{internal}
