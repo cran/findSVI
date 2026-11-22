@@ -1,7 +1,7 @@
-c98d4991f34f60c0d6d42265004cb1af *DESCRIPTION
+58054c5a50e4a3ffb869800cb6f740e9 *DESCRIPTION
 189e90b05074e15c9c6fa7bc4ae9aa19 *LICENSE
 8ddd6a21c238c37832529313af8b6ec2 *NAMESPACE
-2d274a2c20ded52ddf085c64ff9f5dce *NEWS.md
+a8701cf6e6a1ff51c1b075fddbc80943 *NEWS.md
 7dd8dc1fa3b34fd27add9bf028bb755d *R/census_variables.R
 83c0058cd1a9fb86f669505b804a141c *R/cty_cz_2020_xwalk.R
 ac850b585897145faa91e45f15e5575f *R/findSVI-package.R
@@ -15,8 +15,8 @@ b56ff2b193ecba52f9ec7f3b10cca008 *R/utils-pipe.R
 745ac5700768c53170be16a363b41bf1 *R/variable_calculation.R
 e516656e78f8cbc8f714821b442e52d6 *R/zcta_state_xwalk.R
 a4034ce41ba3ca08c3f7447eab6c1c52 *README.md
-b943a1546a1e17be4eea235ec7b4616b *build/partial.rdb
-6bb1a860165ab1703ca9e1a0c7a1344f *build/vignette.rds
+ba582b375e5afde780e991c9b7711c6a *build/partial.rdb
+9e8148182408677318f18056ee776525 *build/vignette.rds
 a2ac38ff55a6d93c2af627ce32ac024f *data/census_variables_2012.rda
 fa2196e4cb0a6f2fb5bc0bd97188d653 *data/census_variables_2013.rda
 291b8b31036ff4df9fda4dd6572a8a9c *data/census_variables_2014.rda
@@ -67,9 +67,9 @@ a7797b434b657bf57d8b1f6668af42c3 *data/variable_e_ep_calculation_2020.rda
 a4b6d34bc299fa2c6b69c03867e9bb2e *data/zcta_state_xwalk2020.rda
 fb38e8d1d52d3da9291dd23e84473f74 *data/zcta_state_xwalk2021.rda
 37dfc54e46894355f5239cdd15e95a36 *data/zcta_state_xwalk2022.rda
-15d08f8d0309fdcc289c4e68e99e328e *inst/doc/findSVI.R
-94e2ada5dc4be311b9918311c94eec0b *inst/doc/findSVI.Rmd
-a324d9c300c55c777910549b1bf2e935 *inst/doc/findSVI.html
+54445badfcf123319f7c006944a3a26b *inst/doc/findSVI.R
+0070d62bae79138cf5d1c0a32be45e8f *inst/doc/findSVI.Rmd
+58ec729f480e958ed214947920464312 *inst/doc/findSVI.html
 9ced9c40baa4cb712634d3021bcc1aef *inst/extdata/cdc_de_ct_svi2020.rda
 d5b29aa0bf61cafb533952d8bc477867 *inst/extdata/cz_svi2020.rda
 4edcfc3f2ab416125e9e97e929bf3909 *inst/extdata/de_ct_raw2020.rda
@@ -99,7 +99,7 @@ aaba93954140ad0b40ce7575e24e225e *inst/testdata/pa_cty_raw2020.rda
 8f84492bc9768826b7f808e8473f3381 *man/cty_cz_2020_xwalk.Rd
 9d5f2ff13f17caa1c5d01ab1e99c5b77 *man/figures/logo.png
 eddfd040296556a79cfae60a02461e21 *man/findSVI-package.Rd
-1c4c6360a257ea00ff2ee7b09db79749 *man/find_svi.Rd
+98524a3240bb48341c730100be58c615 *man/find_svi.Rd
 9832ac05c272f822fad45907dbaa0ab1 *man/find_svi_x.Rd
 d3fe85db466e688c38e4b5078dd8472d *man/get_census_data.Rd
 2ee87defdccb1a91c633cac41fcb5421 *man/get_svi.Rd
@@ -110,4 +110,4 @@ d3fe85db466e688c38e4b5078dd8472d *man/get_census_data.Rd
 6b3833090fb94d9a30dab0f24abd03a0 *man/zcta_state_xwalk.Rd
 d6b4739e1cee7c9905c02260cc4a9350 *tests/testthat.R
 0a29e5b8e033c525ea5f27b287e000ec *tests/testthat/test-get_svi.R
-94e2ada5dc4be311b9918311c94eec0b *vignettes/findSVI.Rmd
+0070d62bae79138cf5d1c0a32be45e8f *vignettes/findSVI.Rmd
